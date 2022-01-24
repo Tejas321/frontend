@@ -1,31 +1,33 @@
 import React from 'react';
 import  ReactDOM  from 'react-dom';
-
-//stateless function component
-//always return JSX
-//div/section/article of fragment
-//className instead of class
-//close every element
-//formating
-
-function Greeting(){
-    return( 
-    <div>
-        <h4>Hello World</h4>
-        <ul>
-            <li>
-                <a herf='#'>hello world</a>
-            </li>
-            <img src='' alt=''/>
-        </ul>
-    </div>
-    );
+import './index.css'
+//Nested components,react tools
+//CSS
+function Booklist(){
+    return(
+        <section  className='booklist'>
+          <Book />
+          <Book />
+          <Book />
+          <Book />
+    
+        </section>
+        );
     }
 
-// const Greeting= () =>{
-//     return React.createElement
-//     ('div',{},
-//     React.createElement('h1',{},'hello world'))
-// }
+const Book= () =>{
+    return <article className='book'>
+        
+        <Image></Image>
+        <Title>
+        </Title>
+        <Auther></Auther>
+        
+        </article>;
+        };
 
-ReactDOM.render(<Greeting/>,document.getElementById('root'))
+
+const Image =()=><img src="https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/"  alt="book"></img>
+const Title =() =><h1>Story</h1>;
+const Auther = () =><h4>Shreyash</h4>;
+ReactDOM.render(<Booklist/>,document.getElementById('root'))
