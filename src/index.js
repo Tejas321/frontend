@@ -3,31 +3,38 @@ import  ReactDOM  from 'react-dom';
 import './index.css'
 //Nested components,react tools
 //CSS
+const firstBook={
+    img:"https://images-na.ssl-images-amazon.com/images/I/71F4+7rk2eL._AC_UL254_SR254,254_.jpg" ,
+    title:"Story book",
+    auther:"Shreyash"
+}
+const secondBook={
+    img:"https://images-na.ssl-images-amazon.com/images/I/71rdsaOMvVL._UX300__PJku-headphones-v1,TopRight,0,-50_AC_UL254_SR254,254_.jpg" ,
+    title:"Good Thoughts",
+    auther:"Atharav"
+}
+
 function Booklist(){
     return(
         <section  className='booklist'>
-          <Book />
-          <Book />
-          <Book />
-          <Book />
-    
+          <Book img={firstBook.img} title={firstBook.title} auther={firstBook.auther}/>
+           <Book img={secondBook.img} title={secondBook.title} auther={secondBook.auther}/>
+          
+          
         </section>
         );
     }
 
-const Book= () =>{
-    return <article className='book'>
-        
-        <Image></Image>
-        <Title>
-        </Title>
-        <Auther></Auther>
+
+const Book= (props) =>{
+    console.log(props)
+     return <article className='book'>
+        <img src={props.img}
+        alt="book"></img>
+        <h1>{props.title}</h1>
+        <h4>{props.auther}</h4>
         
         </article>;
         };
 
-
-const Image =()=><img src="https://pixabay.com/photos/tree-sunset-clouds-sky-silhouette-736885/"  alt="book"></img>
-const Title =() =><h1>Story</h1>;
-const Auther = () =><h4>Shreyash</h4>;
 ReactDOM.render(<Booklist/>,document.getElementById('root'))
