@@ -1,8 +1,7 @@
 import React from 'react';
 import  ReactDOM  from 'react-dom';
 import './index.css'
-//Nested components,react tools
-//CSS
+
 const books=[
 {id:1,
     
@@ -21,22 +20,12 @@ const books=[
     title:"Good Thoughts",
     auther:"Atharav"
 }];
-// const names=["rohit","sham"];
-// const newNames=names.map((name)=>{
-//     return <h1>{name}</h1>
-    
-// });
-// console.log(newNames);
+
 function Booklist(){
     return(
         <section  className='booklist'>
-            {/* {newNames} */}
             {books.map((book)=>{
-                // spreed out operator...
                 return <Book key={book.id} {...book}></Book>;
-                // return <Book key={book.id} book={book}></Book>;
-                {/* <h1>{title}</h1>
-                <h3>{auther}</h3> */}
             })}
         </section>
         );
@@ -44,16 +33,29 @@ function Booklist(){
 
 
 const Book= (props) =>{
+    //attribute,eventHandler
+    //onclick,onMouseover
     console.log(props)
     const {img,title,auther}=props;
-    // const {img,title,auther}=props.book;
-     
-     return <article className='book'>
+    const clickhandler=(e)=>{
+        console.log(e)
+        console.log(e.target)
+        alert("hello world");
+
+    };
+    const complexExample=(auther)=>{
+        console.log(auther)
+
+    }
+    return <article className='book' onMouseOver={()=>{
+        console.log(title)
+    }}>
         <img src={img}
         alt="book"></img>
-        <h1>{title}</h1>
+        <h1 onClick={()=>console.log(title)}>{title}</h1>
         <h4>{auther}</h4>
-        {/* {props.children} */}
+        <button type="button" onClick={clickhandler}>Reference example</button>
+        <button type="button" onClick={()=>complexExample(auther)}>more complex</button>
         </article>;
         };
 
